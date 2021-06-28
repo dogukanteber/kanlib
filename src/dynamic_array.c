@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-#include "dynamic_array.h"
+#include "../include/dynamic_array.h"
 
 
 void dynamic_array_init(dynamic_array* da) {

@@ -130,7 +130,7 @@ void dynamic_array_delete(dynamic_array *, size_t);
 *	@see dynamic_array_init(dynamic_array*);
 *
 */
-void dynamic_array_free(dynamic_array *)
+void dynamic_array_free(dynamic_array *);
 
 
 #endif
