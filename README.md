@@ -13,4 +13,4 @@ kanlib is a library to provide you basic data structures and additional string h
 
 ### License
 
-Released under the Revised  GNU GENERAL PUBLIC LICENSE. See [LICENSE](LICENSE) for details.
+Released under the revised  GNU GENERAL PUBLIC LICENSE. See [LICENSE](LICENSE) for details.
