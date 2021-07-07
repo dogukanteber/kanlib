@@ -12,3 +12,9 @@
 */
 
 void dynamic_array_test(void);
+
+
+/**
+	Run stack tests
+*/
+void stack_test(void);
