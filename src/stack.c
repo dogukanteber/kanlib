@@ -42,39 +42,3 @@ void stack_pop(stack* s) {
 void stack_free(stack* s) {
 	free(s->items);
 }
-
-
-int main(void) {
-	stack s;
-
-	STACK_INIT(s);
-
-	STACK_PUSH(s, int*, 1);
-	STACK_PUSH(s, int*, 2);
-	STACK_PUSH(s, int*, 3);
-	STACK_PUSH(s, int*, 4);
-
-	while ( !STACK_EMPTY(s) ) {
-		printf("%d\n", STACK_TOP(s));
-		STACK_POP(s);
-	}
-
-	STACK_FREE(s);
-
-	stack ss;
-
-	STACK_INIT(ss);
-
-	STACK_PUSH(ss, char*, "dogukan");
-	STACK_PUSH(ss, char*, "teber");
-	STACK_PUSH(ss, char*, "klsjdfjkl");
-
-	while ( !STACK_EMPTY(ss) ) {
-		printf("%s\n", STACK_TOP(ss));
-		STACK_POP(ss);
-	}
-
-	STACK_FREE(ss);
-
-	return 0;
-}
