@@ -1,29 +1,33 @@
 #ifndef KANLIB_QUEUE
 #define KANLIB_QUEUE 1
 
+#include <stdbool.h>
 
-typedef struct q_node {
+typedef struct q_node q_node;
+typedef struct queue queue;
+
+struct q_node {
 	void* item;
 	q_node* prev;
 	q_node* next;
-} q_node;
+};
 
 
-typedef struct queue {
-	q_node* head;
-	q_node* tail;
-} queue;
+struct queue {
+	q_node* front;
+	q_node* rear;
+};
 
 
 void queue_init( queue* );
 
-void queue_push( queue* , void* );
+void queue_enqueue( queue*, void* );
 
-void queue_pop( queue* );
+void queue_dequeue( queue* );
 
-void* queue_head( queue* );
+void* queue_peek( queue* );
 
-void* queue_tail( queue* );
+bool queue_isempty( queue* );
 
 void queue_free( queue* );
 
