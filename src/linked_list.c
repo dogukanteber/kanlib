@@ -65,29 +65,3 @@ void linked_list_free(linked_list* ll) {
 	free(ll->head);
 	free(ll->tail);
 }
-
-int main(int argc, char const *argv[]) {
-	linked_list ll;
-
-	linked_list_init(&ll);
-
-	linked_list_add( &ll, "dogukan");
-	linked_list_add( &ll, "teber");
-	linked_list_add( &ll, "dogukan");
-	linked_list_add( &ll, "teber");
-
-	linked_list_pop_start(&ll);
-	
-	linked_list_pop_end(&ll);
-
-	while ( ll.head != NULL ) {
-		printf("%s\n", ll.head->data);
-		ll.head = ll.head->next;
-	}
-
-
-	linked_list_free(&ll);
-	
-
-	return 0;
-}
