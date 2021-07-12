@@ -1,5 +1,5 @@
 /**
-*	@file 			dynamic_array.h
+*	@file 			test.h
 *	@author 		Doğukan Teber
 *	@date 			28/06/2021
 *
@@ -11,10 +11,16 @@
 	Run dynamic array tests
 */
 
-void dynamic_array_test(void);
+int dynamic_array_test(void);
 
 
 /**
 	Run stack tests
 */
-void stack_test(void);
+int stack_test(void);
+
+
+/**
+	Run queue tests
+*/
+int queue_test(void);
