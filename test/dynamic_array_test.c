@@ -1,5 +1,5 @@
 #include <CUnit/Basic.h>
-//#include "test.h"
+#include "test.h"
 
 #include "../include/dynamic_array.h"
 #include <stdint.h>
