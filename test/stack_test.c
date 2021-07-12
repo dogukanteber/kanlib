@@ -43,8 +43,7 @@ void test_pop(void) {
 }
 
 
-int stack_test(int argc, char const *argv[])
-{
+int stack_test() {
 	CU_pSuite pSuite = NULL;
 
 	if ( CUE_SUCCESS != CU_initialize_registry() )
