@@ -1,7 +1,7 @@
 # kanlib
 
 
-### Description
+## Description
 
 kanlib is a library to provide you basic data structures and additional string handling functions. Supported data structures:
 
@@ -11,6 +11,6 @@ kanlib is a library to provide you basic data structures and additional string h
 * Queue                 --> [queue.h](include/queue.h)
 * Hash Table            --> [hash_table.h](include/hash_table.h)
 
-### License
+## License
 
 Released under the revised  GNU GENERAL PUBLIC LICENSE. See [LICENSE](LICENSE) for details.
