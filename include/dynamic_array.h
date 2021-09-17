@@ -14,15 +14,6 @@
 #define DYNAMIC_ARRAY_INIT_CAPACITY 4 ///< Default length of the dynamic array
 
 
-#define DYNAMIC_ARRAY_INIT(da) dynamic_array da; dynamic_array_init(&da)
-#define DYNAMIC_ARRAY_ADD(da, item) dynamic_array_add(&da, (void *) item);
-#define DYNAMIC_ARRAY_SIZE(da) dynamic_array_size(&da);
-#define DYNAMIC_ARRAY_GET(da, type, index) (type) dynamic_array_get(&da, index)
-#define DYNAMIC_ARRAY_SET(da, index, item) dynamic_array(&da, index, (void *) item)
-#define DYNAMIC_ARRAY_DELETE(da, index) dynamic_array_delete(&da, index)
-#define DYNAMIC_ARRAY_FREE(da) dynamic_array_free(&da)
-
-
 /// dynamic_array is a struct that holds the items, size and the capacity of the dynamic array
 typedef struct dynamic_array {
 	void** items; 		///< contains items in other words, array
