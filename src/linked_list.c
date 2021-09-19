@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <assert.h>
 
 #include "../include/linked_list.h"
 
@@ -31,12 +32,10 @@ size_t linked_list_count(linked_list* ll, void* item) {
 	return count;
 }
 
-void* linked_list_getnth(linked_list* ll, size_t index) {
+void* linked_list_get_nth(linked_list* ll, size_t index) {
 	size_t size = linked_list_size(ll);
-	if ( index < 0 || index >= size ) {
-		printf("%s\n", "Out of bounds in linked_list_getnth.");
-		exit(EXIT_FAILURE);
-	}
+
+	assert(index < 0 && index >= size);
 
 	ll_node* temp_head = ll->head;
 	for ( int i=0; i<size; ++i ) {
@@ -66,6 +65,8 @@ static ll_node* linked_list_create_node(void* item) {
 	new_node->data = item;
 	new_node->prev = NULL;
 	new_node->next = NULL;
+
+	assert(new_node != NULL);
 
 	return new_node;
 }
@@ -109,13 +110,11 @@ void linked_list_insert_end(linked_list* ll, void* item) {
 	}
 }
 
-
+// refactor this function
 void linked_list_insert_nth(linked_list* ll, void* item, size_t index) {
 	size_t size = linked_list_size(ll);
-	if ( size < index ) {
-		fprintf(stdout, "Index cannot be greater than size. (linked_list_insert_nth)\n");
-		return;
-	}
+
+	assert(size < index);
 
 	if ( index == 0) {
 		linked_list_insert_start(ll, item);
