@@ -146,22 +146,37 @@ void linked_list_insert_nth(linked_list* ll, void* item, size_t index) {
 	}
 }
 
-void linked_list_pop_start(linked_list* ll) {
+void* linked_list_pop_start(linked_list* ll) {
+	void* value = NULL;
 	if ( ll->head != NULL ) {
 		ll_node* temp = ll->head;
+		value = temp->data;
 		ll->head = ll->head->next;
 		ll->head->prev = NULL;
 		free(temp);
 	}
+	return value;
 }
 
-void linked_list_pop_end(linked_list* ll) {
+// check the condition when there is one element left 
+// and the tail is NULL while head is assigned to something
+void* linked_list_pop_end(linked_list* ll) {
+	void* value = NULL;
 	if ( ll->tail != NULL ) {
 		ll_node* temp = ll->tail;
+		value = temp->data;
 		ll->tail = ll->tail->prev;
 		ll->tail->next = NULL;
 		free(temp);
 	}
+	if ( linked_list_size(ll) == 1 ) {
+		ll_node* temp = ll->head;
+		value = temp->data;
+		ll->head = NULL;
+		ll->tail = NULL;
+		free(temp);
+	}
+	return value;
 }
 
 
@@ -232,9 +247,13 @@ int main(int argc, char const *argv[]) {
 
 	linked_list_concatenate(l1, l2);
 
-	linked_list_print(l1);
-	linked_list_print(l2);
-
+	for ( size_t i=0; i<3; ++i ) {
+		linked_list_print(l1);
+		printf("head: %ld:", (intptr_t) l1->head->data);
+		printf("tail: %ld:", (intptr_t) l1->tail->data);
+		printf("%ld\n", (intptr_t) linked_list_pop_start(l1));
+		printf("%ld\n", (intptr_t) linked_list_pop_end(l1));
+	}
 
 	linked_list_free(l1);
 
