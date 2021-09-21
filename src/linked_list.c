@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <assert.h>
 
 #include "../include/linked_list.h"
 
+// Take a look at inserting and popping function deeply
 
 void linked_list_init(linked_list* ll) {
 	ll->head = NULL;
@@ -234,6 +236,52 @@ void linked_list_concatenate(linked_list* l1, linked_list* l2) {
 	l2->tail = NULL;
 }
 
+
+void linked_list_divide_half(linked_list* src, linked_list* dest1, linked_list* dest2) {
+	size_t size = linked_list_size(src);
+
+	linked_list_init(dest1);
+	linked_list_init(dest2);
+
+
+	if ( size < 2 ) {
+		dest1->head = src->head;
+		dest2->head = NULL;
+		return;
+	}
+	
+	size_t move = (size - 1) / 2;
+
+	ll_node* runner = src->head;
+
+	while ( move-- ) {
+		runner = runner->next;
+	}
+	
+	dest1->head = src->head;
+	dest1->tail = runner;
+
+	dest2->head = runner->next;
+	dest2->tail = src->tail;
+
+	runner->next = NULL;
+}
+
+void linked_list_remove_duplicates(linked_list* ll) {
+	assert(ll->head != NULL);
+
+	ll_node* runner = ll->head;
+	while ( runner->next != NULL ) {
+		if ( runner->data == runner->next->data ) {
+			ll_node* to_removed = runner->next;
+			runner->next = to_removed->next;
+			free(to_removed);
+		}
+		else 
+			runner = runner->next;
+	}
+}
+
 int main(int argc, char const *argv[]) {
 	linked_list linked_l1, linked_l2;
 	linked_list* l1 = &linked_l1;
@@ -242,18 +290,25 @@ int main(int argc, char const *argv[]) {
 	linked_list_init(l1);
 	linked_list_init(l2);
 
-	linked_list_dummy(l1);
-	linked_list_dummy(l2);
+	linked_list linked_l;
+	linked_list* ll = &linked_l;
 
-	linked_list_concatenate(l1, l2);
+	linked_list_init(ll);
 
-	for ( size_t i=0; i<3; ++i ) {
-		linked_list_print(l1);
-		printf("head: %ld:", (intptr_t) l1->head->data);
-		printf("tail: %ld:", (intptr_t) l1->tail->data);
-		printf("%ld\n", (intptr_t) linked_list_pop_start(l1));
-		printf("%ld\n", (intptr_t) linked_list_pop_end(l1));
-	}
+	linked_list_insert_end(ll, (int*) 1);
+	linked_list_insert_end(ll, (int*) 1);
+	linked_list_insert_end(ll, (int*) 2);
+	linked_list_insert_end(ll, (int*) 3);
+	linked_list_insert_end(ll, (int*) 4);
+	linked_list_insert_end(ll, (int*) 4);
+	linked_list_insert_end(ll, (int*) 4);
+	linked_list_insert_end(ll, (int*) 5);
+	linked_list_insert_end(ll, (int*) 5);
+	linked_list_insert_end(ll, (int*) 6);
+
+	linked_list_remove_duplicates(ll);
+
+	linked_list_print(ll);
 
 	linked_list_free(l1);
 

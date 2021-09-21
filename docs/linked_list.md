@@ -77,6 +77,18 @@ void linked_list_concatenate(linked_list* l1, linked_list* l2);
 Merges the second list to the first list and frees l2.
 
 ```c
+void linked_list_remove_duplicates(linked_list* ll);
+```
+
+Takes a sorted list as an argument and removes the duplicated values.
+
+```c
+void linked_list_divide_half(linked_list* src, linked_list* dest1, linked_list* dest2);
+```
+
+Divides the given list into the middle. If the size of src list is an odd number, left part's size is greater than right part. For example, size of src is 9 then size of dest1 will be 5 and dest2 wiill be 4.
+
+```c
 void linked_list_free(linked_list* ll);
 ```
 

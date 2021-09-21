@@ -146,6 +146,35 @@ void linked_list_concatenate(linked_list*, linked_list*);
 
 
 /**
+*	@brief Divides the given list into the middle.
+*
+*	@param linked_list* src
+*	@param linked_list* dest1
+*	@param linked_list* dest2
+*
+*	@note If the size of src list is odd, dest1's size will be 
+*	greater than size of dest2. For example, let size of src be 7. 
+*	After the function call, the size of dest1 will be 4 and 
+*	dest2's will be 3.
+*
+*	@returns nothing
+*
+*/
+void linked_list_divide_half(linked_list*, linked_list*, linked_list*);
+
+
+/**
+*	@brief Takes a sorted list and removes duplicated values.
+*
+*	@param linked_list* ll (sorted)
+*
+*	@returns nothing
+*
+*/
+void linked_list_remove_duplicates(linked_list*);
+
+
+/**
 *	@brief Frees up the memory and does necessary deallocations.
 *
 *	@param linked_list* ll
