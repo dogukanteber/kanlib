@@ -282,6 +282,53 @@ void linked_list_remove_duplicates(linked_list* ll) {
 	}
 }
 
+void linked_list_move_node(linked_list* l1, linked_list* l2) {
+	if ( l2 == NULL ) {
+		printf("%s\n", "Second list is empty. No element to pop.");
+		exit(EXIT_FAILURE);
+	}
+
+	void* l2_head = linked_list_pop_start(l2);
+	linked_list_insert_start(l1, l2_head);
+}
+
+void linked_list_reverse(linked_list* ll) {
+	ll_node* head = ll->head;
+	ll_node* tail = ll->tail;
+
+	ll_node* front = NULL;
+	ll_node* middle = ll->head;
+	ll_node* back = NULL;
+
+	while ( middle != NULL ) {
+		front = middle->next;
+		middle->next = back;
+		back = middle;
+		middle = front;
+	}
+
+	ll->head = tail;
+	ll->tail = head;
+}
+
+void linked_list_reverse_recursive(linked_list* ll, ll_node* current) {
+	if ( current == NULL )
+		return;
+
+	// we are at the end of the list
+	if ( current->next == NULL ) {
+		// make the current node head
+		ll->head = current;
+		return;
+	}
+
+	linked_list_reverse_recursive(ll, current->next);
+	current->next->next = current;
+	current->next = NULL;
+
+	ll->tail = current;
+}
+
 int main(int argc, char const *argv[]) {
 	linked_list linked_l1, linked_l2;
 	linked_list* l1 = &linked_l1;
@@ -290,27 +337,25 @@ int main(int argc, char const *argv[]) {
 	linked_list_init(l1);
 	linked_list_init(l2);
 
-	linked_list linked_l;
-	linked_list* ll = &linked_l;
+	linked_list_insert_end(l1, (int*) 1);
+	linked_list_insert_end(l1, (int*) 2);
+	linked_list_insert_end(l1, (int*) 3);
+	linked_list_insert_end(l1, (int*) 4);
 
-	linked_list_init(ll);
+	linked_list_insert_end(l2, (int*) 4);
+	linked_list_insert_end(l2, (int*) 3);
+	linked_list_insert_end(l2, (int*) 2);
+	linked_list_insert_end(l2, (int*) 1);
 
-	linked_list_insert_end(ll, (int*) 1);
-	linked_list_insert_end(ll, (int*) 1);
-	linked_list_insert_end(ll, (int*) 2);
-	linked_list_insert_end(ll, (int*) 3);
-	linked_list_insert_end(ll, (int*) 4);
-	linked_list_insert_end(ll, (int*) 4);
-	linked_list_insert_end(ll, (int*) 4);
-	linked_list_insert_end(ll, (int*) 5);
-	linked_list_insert_end(ll, (int*) 5);
-	linked_list_insert_end(ll, (int*) 6);
+	linked_list_reverse_recursive(l1, l1->head);
+	linked_list_reverse_recursive(l2, l2->head);
 
-	linked_list_remove_duplicates(ll);
+	linked_list_print(l1);
+	linked_list_print(l2);
 
-	linked_list_print(ll);
 
 	linked_list_free(l1);
+	linked_list_free(l2);
 
 	return 0;
 }

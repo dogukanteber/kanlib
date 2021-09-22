@@ -89,6 +89,18 @@ void linked_list_divide_half(linked_list* src, linked_list* dest1, linked_list* 
 Divides the given list into the middle. If the size of src list is an odd number, left part's size is greater than right part. For example, size of src is 9 then size of dest1 will be 5 and dest2 wiill be 4.
 
 ```c
+void linked_list_reverse(linked_list* ll);
+```
+
+Reverses the given linked_list.
+
+```c
+void linked_list_reverse_recursive(linked_list* ll, ll_node* current);
+```
+
+Reverses the given linked_list, recursively.
+
+```c
 void linked_list_free(linked_list* ll);
 ```
 

@@ -173,6 +173,30 @@ void linked_list_divide_half(linked_list*, linked_list*, linked_list*);
 */
 void linked_list_remove_duplicates(linked_list*);
 
+/**
+*	@brief Reverses the given linked_list.
+*
+*	@param linked_list* ll
+*
+*	@returns nothing
+*
+*/
+void linked_list_reverse(linked_list*);
+
+
+/**
+*	@brief Recursively reverses the given linked list.
+*
+*	@param linked_list* ll
+*	@param ll_node* current_node
+*
+*	@returns nothing
+*
+*	@note This function is implemented as a challange. Mostly, it is not optimal to use in production code.
+*
+*	@see linked_list_reverse(linked_list*)
+*/
+void linked_list_reverse_recursive(linked_list*, ll_node*);
 
 /**
 *	@brief Frees up the memory and does necessary deallocations.
