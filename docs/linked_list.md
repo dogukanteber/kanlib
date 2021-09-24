@@ -25,6 +25,7 @@ Initializes the given linked_list. Call it before working on with linked_list.
 
 ```c
 size_t linked_list_size(linked_list* ll);
+```
 
 Returns the size of the given linked_list.
 
