@@ -4,11 +4,13 @@ dynamic_array is dynamically allocated array. It is known as vector in C++, Arra
 
 ### API
 
+```c
 typedef struct dynamic_array {
 	void** items;
 	size_t size;
 	size_t capacity;
 } dynamic_array;
+```
 
 ```c
 void dynamic_array_init(dynamic_array* da)
