@@ -18,20 +18,8 @@
 #define KANLIB_INIT_CAPACITY 4 ///< Default length of the stack
 
 
-#define STACK_INIT(s) stack_init(&s)
-#define STACK_PUSH(s, type, item) stack_push(&s, (type) item)
-#define STACK_POP(s) stack_pop(&s)
-#define STACK_TOP(s) stack_top(&s)
-#define STACK_EMPTY(s) stack_empty(&s)
-#define STACK_FREE(s) stack_free(&s)
-
-
-
-
 /// Forward declaration of typedef for stack struct
 typedef struct stack stack;
-
-
 
 
 /// stack is a struct that holds the items, size and the capacity of the stack similiar to dynamic_array
