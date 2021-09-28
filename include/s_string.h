@@ -52,7 +52,7 @@ char* string_reverse(const char*);
 *	@attention The caller of this function have to keep the returned value in a variable and after done using it, s/he must free the memory.
 *
 */
-char* string_upper(char*);
+char* string_upper(char*); // review
 
 /**
 *	@brief Convert each character to lowercase
@@ -66,6 +66,29 @@ char* string_upper(char*);
 *	@attention The caller of this function have to keep the returned value in a variable and after done using it, s/he must free the memory.
 *
 */
-char* string_lower(char*);
+char* string_lower(char*); // review
+
+/**
+*	@brief Checks if the given string starts with the given prefix
+*
+*	@param const char* string
+*   @param const char* prefix
+*
+*	@returns Returns 1 if the string starts with the prefix, 0 otherwise
+*
+*/
+int string_starts_with(const char*, const char*);
+
+/**
+*	@brief Checks if the given string ends with the given postfix
+*
+*	@param const char* string
+*   @param const char* postfix
+*
+*	@returns Returns 1 if the string ends with the postfix, 0 otherwise
+*
+*/
+int string_ends_with(const char*, const char*);
+
 
 #endif // KANLIB_STRING

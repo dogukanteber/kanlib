@@ -61,27 +61,37 @@ char* string_lower(char* string) {
     return string;
 }
 
-int main(int argc, char const *argv[]) {
-    char string[] = "hello world this is my string library.";
-    char** splitted = string_split(string, " ");
+int string_starts_with(const char* string, const char* prefix) {
+    size_t len_string = strlen(string);
+    size_t len_prefix = strlen(prefix);
 
-    for ( size_t i=0; splitted[i] != NULL; ++i ) {
-        printf("%s\n", splitted[i]);   
+    if ( len_prefix > len_string )
+        return 0;
+
+    for ( size_t i=0; i<len_prefix; ++i ) {
+        if ( string[i] != prefix[i] )
+            return 0;
+    }
+    
+    return 1;
+}
+
+int string_ends_with(const char* string, const char* prefix) {
+    size_t len_string = strlen(string);
+    size_t len_prefix = strlen(prefix);
+
+    if ( len_prefix > len_string )
+        return 0;
+
+    size_t runner_string = len_string - len_prefix;
+    size_t runner_prefix = 0;
+    while ( runner_prefix < len_prefix ) {
+        if ( string[runner_string] != prefix[runner_prefix] )
+            return 0;
+
+        runner_prefix++;
+        runner_string++;
     }
 
-    char lower[] = "lowercase string, right?";
-    printf("%s\n", string_upper(lower));
-    printf("%s\n", string_lower(lower));
-    
-    char* reversed = string_reverse(lower);
-
-    printf("%s\n", reversed);
-
-    printf("%s\n", lower);
-    printf("%s\n", string);
-
-    free(splitted);
-    free(reversed);
-
-    return 0;
+    return 1;
 }
