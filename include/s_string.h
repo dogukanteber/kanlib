@@ -91,4 +91,17 @@ int string_starts_with(const char*, const char*);
 int string_ends_with(const char*, const char*);
 
 
+/**
+*	@brief Concatenates the given two strings and returns the newly created one.
+*
+*	@param const char* string1
+*   @param const char* string2
+*
+*   @note The function dynamically allocates the concatenated string. Therefore, it is developer's responsibility to free the allocated resource
+*
+*	@returns Returns merged string1 and string2
+*
+*/
+char* string_concatenate(const char*, const char*);
+
 #endif // KANLIB_STRING

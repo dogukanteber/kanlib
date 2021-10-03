@@ -95,3 +95,25 @@ int string_ends_with(const char* string, const char* prefix) {
 
     return 1;
 }
+
+char* string_concatenate(const char* string1, const char* string2) {
+    size_t len = strlen(string1) + strlen(string2);
+
+    char* concatenated_string = malloc(sizeof(char) * (len + 1));
+
+    size_t index = 0;
+    size_t runner_string1 = 0;
+    size_t runner_string2 = 0;
+    
+    while ( string1[runner_string1] ) {
+        concatenated_string[index++] = string1[runner_string1++];
+    }
+
+    while( string2[runner_string2] ) {
+        concatenated_string[index++] = string2[runner_string2++];
+    }
+
+    concatenated_string[index] = '\0';
+
+    return concatenated_string;
+}
