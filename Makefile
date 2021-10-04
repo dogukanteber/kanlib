@@ -1,21 +1,17 @@
 CC = gcc
-CFLAGS =
-RM = rm -rf
-OUT = dynamic_array
+CFLAGS = -Wall -Werror
 
-all: build
+LIBRARY_NAME = libkanlib.so
 
-build: main.o dynamic_array.o
-	$(CC) $(CFLAGS) -o $(OUT) main.c dynamic_array.c
+SOURCE_FILES = src/*.c
+INCLUDE_FILES = include/*.h
+OBJECT_FILES = *.o
 
-debug: CFLAGS += -DDEBUG_ON
-debug: build
+all: *.o
+	$(CC) -shared -o $(LIBRARY_NAME) $(OBJECT_FILES)
 
-main.o: main.c dynamic_array.h
-	$(CC) $(CFLAGS) -c main.c
+*.o: $(SOURCE_FILES)
+	$(CC) -fPIC -c $(SOURCE_FILES)
 
-dynamic_array.o: dynamic_array.c dynamic_array.h
-	$(CC) $(CFLAGS) -c dynamic_array.c
-
-clean: 
-	$(RM) *.o $(OUT)
+clean:
+	rm $(OBJECT_FILES) $(LIBRARY_NAME)
