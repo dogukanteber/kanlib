@@ -35,7 +35,7 @@ You can find documentation under docs/ directory. Since each function is self-ex
 * Linked List       --> [linked_list.md](docs/linked_list.md)
 * Stack             --> [stack.md](docs/stack.md)
 * Queue             --> [queue.md](docs/queue.md)
-* String            --> [s_string.md](docs/s_string.md) (not fully implemented)
+* String            --> [s_string.md](docs/s_string.md)
 
 ## Contribution
 
