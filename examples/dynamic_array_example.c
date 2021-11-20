@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "../src/dynamic_array.c"
+#include <kanlib/dynamic_array.h>
 
 size_t square(size_t x) {
     return x * x;
