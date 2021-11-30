@@ -1,18 +1,19 @@
+#include <stdint.h>
 #include <CUnit/Basic.h>
+#include <kanlib/dynamic_array.h>
+
 #include "test.h"
 
-#include "../include/dynamic_array.h"
-#include <stdint.h>
 
 static dynamic_array da;
 
-int init_suite1(void) {
+int init_suite_da(void) {
 	dynamic_array_init(&da);
 
 	return 0;
 }
 
-int clean_suite1(void) {
+int clean_suite_da(void) {
 	dynamic_array_free(&da);
 
 	return 0;
@@ -55,7 +56,7 @@ int dynamic_array_test(void) {
 	if ( CUE_SUCCESS != CU_initialize_registry() )
 		return CU_get_error();
 
-	pSuite = CU_add_suite("Suite 1", init_suite1, clean_suite1);
+	pSuite = CU_add_suite("Suite 1", init_suite_da, clean_suite_da);
 	
 	if ( pSuite == NULL ) {
 		CU_cleanup_registry();

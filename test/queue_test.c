@@ -1,18 +1,19 @@
-#include <CUnit/Basic.h>
 #include <stdint.h>
+#include <CUnit/Basic.h>
+#include <kanlib/queue.h>
 
 #include "test.h"
-#include "../include/queue.h"
+
 
 static queue q;
 
-int init_suite1(void) {
+int init_suite_queue(void) {
 	queue_init(&q);
 
 	return 0;
 }
 
-int clean_suite1(void) {
+int clean_suite_queue(void) {
 	queue_free(&q);
 
 	return 0;
@@ -72,7 +73,7 @@ int queue_test()
 	if ( CUE_SUCCESS != CU_initialize_registry() )
 		return CU_get_error();
 
-	pSuite = CU_add_suite("Suite 1", init_suite1, clean_suite1);
+	pSuite = CU_add_suite("Suite 1", init_suite_queue, clean_suite_queue);
 	
 	if ( pSuite == NULL ) {
 		CU_cleanup_registry();

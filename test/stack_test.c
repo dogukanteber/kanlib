@@ -1,18 +1,18 @@
-#include <CUnit/Basic.h>
 #include <stdint.h>
+#include <CUnit/Basic.h>
+#include <kanlib/stack.h>
 
 #include "test.h"
-#include "../include/stack.h"
 
 static stack s;
 
-int init_suite1(void) {
+int init_suite_stack(void) {
 	stack_init(&s);
 
 	return 0;
 }
 
-int clean_suite1(void) {
+int clean_suite_stack(void) {
 	stack_free(&s);
 
 	return 0;
@@ -49,7 +49,7 @@ int stack_test() {
 	if ( CUE_SUCCESS != CU_initialize_registry() )
 		return CU_get_error();
 
-	pSuite = CU_add_suite("Suite 1", init_suite1, clean_suite1);
+	pSuite = CU_add_suite("Suite 1", init_suite_stack, clean_suite_stack);
 	
 	if ( pSuite == NULL ) {
 		CU_cleanup_registry();

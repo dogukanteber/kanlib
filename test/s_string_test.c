@@ -1,14 +1,15 @@
 #include <stdlib.h>
 #include <CUnit/Basic.h>
+#include <kanlib/s_string.h>
 
 #include "test.h"
-#include "../include/s_string.h"
 
-int init_suite1(void) {
+
+int init_suite_s_string(void) {
 	return 0;
 }
 
-int clean_suite1(void) {
+int clean_suite_s_string(void) {
 	return 0;
 }
 
@@ -101,7 +102,7 @@ int s_string_test(void) {
 	if ( CUE_SUCCESS != CU_initialize_registry() )
 		return CU_get_error();
 
-	pSuite = CU_add_suite("Suite 1", init_suite1, clean_suite1);
+	pSuite = CU_add_suite("Suite 1", init_suite_s_string, clean_suite_s_string);
 	
 	if ( pSuite == NULL ) {
 		CU_cleanup_registry();
