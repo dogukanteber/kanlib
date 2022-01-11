@@ -11,7 +11,6 @@ kanlib is a library to provide you basic data structures and additional string h
 * Queue                 --> [queue.h](include/queue.h)
 * String                --> [s_string.h](include/s_string.h)
 
-The library will possibly grow in the future. The documentation and code examples have missing parts. I will cover each missing part day by day.
 
 ## Platform
 
